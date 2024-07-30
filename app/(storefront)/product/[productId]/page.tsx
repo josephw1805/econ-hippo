@@ -6,6 +6,7 @@ import prisma from "@/app/lib/db";
 import { formatPrice } from "@/lib/utils";
 import { Star } from "lucide-react";
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getData(productId: string) {
   const data = await prisma.product.findUnique({
@@ -31,6 +32,7 @@ export default async function ProductIdRoute({
 }: {
   params: { productId: string };
 }) {
+  noStore();
   const data = await getData(params.productId);
   const addProducttoShoppingCart = addItem.bind(null, data.id);
 
