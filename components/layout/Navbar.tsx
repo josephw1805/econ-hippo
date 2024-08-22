@@ -124,14 +124,7 @@ const Navbar = ({ user, cart }: iAppProps) => {
                 </Link>
               ))}
               {user ? (
-                <div className="flex flex-col gap-8">
-                  <Link href="/cart" className="group flex items-center">
-                    <ShoppingBag className="h-6 w-6 text-gray-400 group-hover:text-gray-500" />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      {total}
-                    </span>
-                  </Link>
-
+                <div className="flex gap-8">
                   <UserDropdown
                     id={user.id}
                     email={user.email as string}
@@ -141,6 +134,12 @@ const Navbar = ({ user, cart }: iAppProps) => {
                       `https://avatar.vercel.sh/${user.given_name}`
                     }
                   />
+                  <Link href="/cart" className="group flex items-center">
+                    <ShoppingBag className="h-6 w-6 text-gray-400 group-hover:text-gray-500" />
+                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                      {total}
+                    </span>
+                  </Link>
                 </div>
               ) : (
                 <>
